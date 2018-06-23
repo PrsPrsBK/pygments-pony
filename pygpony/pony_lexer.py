@@ -33,7 +33,7 @@ class PonyLexer(RegexLexer):
 
         'keywords': [
             (words((
-                'actor', 'break', 'class', 'continue', 'del', 'elif', 'else', 'end',
+                'actor', 'break', 'continue', 'del', 'elif', 'else', 'end',
                 'exec', 'finally', 'for', 'in', 'if', 'match', 'new',
                 'object', 'recover', 'ref', 'repeat', 'return', 'type', 'try', 'use', 'while', 'yield',
                 'as', 'with'), suffix=r'\b'),
