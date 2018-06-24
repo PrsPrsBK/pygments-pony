@@ -10,7 +10,7 @@ class PonyLexer(RegexLexer):
 
     tokens = {
         'classname': [
-            (r'[A-Z]{1}[a-zA-Z_]\w*', Name.Class, '#pop'),
+            (r'[A-Z]{1}[a-zA-Z0-9_]\w*', Name.Class, '#pop'),
             default('#pop'),
         ],
 
@@ -27,7 +27,7 @@ class PonyLexer(RegexLexer):
         ],
 
         'funcname': [
-            (r'[a-zA-Z_]\w*', Name.Function, '#pop'),
+            (r'[a-zA-Z_]+(?=\()', Name.Function, '#pop'),
             default('#pop'),
         ],
 
@@ -62,7 +62,8 @@ class PonyLexer(RegexLexer):
             include('value'),
             (r'(class|actor|primitive|type)((?:\s)+)', bygroups(Keyword, Text), 'classname'),
             (r'(var|let|embed)((?:\s|\\\s)+)', bygroups(Keyword, Text), 'fieldname'),
-            (r'(fun|be)((?:\s|\\\s)+)', bygroups(Keyword, Text), 'funcname'),
+            (r'(fun|be)((?:\s)+)', bygroups(Keyword, Text), 'funcname'),
+            (r'(\s*:\s*)', bygroups(Text), 'classname'),
             (r'/\*', Comment.Multiline, '#push'),
             (r'//.*$', Comment.Singleline),
             (r'.+', Text),
