@@ -7,8 +7,8 @@ pygments-pony
 How to activate
 ===============
 
-Navigate to pygments-pony directory, and `pip install -e .` .
-After that, specify reST's `code-block` as `pony`, and build the reST documents.
+Navigate to pygments-pony directory, and ``pip install -e .`` .
+After that, specify reST's ``code-block`` as ``pony``, and build the reST documents.
 
 LICENSE
 =======
