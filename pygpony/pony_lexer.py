@@ -42,6 +42,17 @@ class PonyLexer(RegexLexer):
             (words((
                 'true', 'false', 'None'), suffix=r'\b'),
              Keyword.Constant),
+            (words((
+                '_init', '_final'), suffix=r'\b'),
+             Name.Function.Magic),
+            # builtin-type
+            (words((
+                'Bool', 'String',
+                'ISize', 'ILong', 'I16', 'I32', 'I64', 'I128',
+                'USize', 'ULong', 'U16', 'U32', 'U64', 'U128',
+                'F32', 'F64',
+                'Env'), suffix=r'\b'),
+             Keyword.Type),
         ],
 
         'simplevalue':[
@@ -62,13 +73,14 @@ class PonyLexer(RegexLexer):
         'root': [
             # structural part
             (r'//.*$', Comment.Single),
-            (r'\(|\)|\[|\]|\{|\}|\||,|\.|=>', Punctuation),
+            (r'\(|\)|\[|\]|\{|\}|\||,|\.|=>|:|;', Punctuation),
             (r'\+|-|\*|/|=|==|!=|<=|>=|<|>', Operator),
             (r'(is|isnt)\b', Operator.Word),
-            (r'(class|actor|primitive|type|trait|interface)(\s+)', bygroups(Keyword.Declaration, Text), 'classname'),
+            (r'(actor)(\s+)(Main)', bygroups(Keyword.Declaration, Text, Name.Builtin)),
+            (r'(actor|class|primitive|type|trait|interface)(\s+)', bygroups(Keyword.Declaration, Text), 'classname'),
             (r'(var|let|embed)(\s+)', bygroups(Keyword.Declaration, Text), 'fieldname'),
             (r'(fun|be|new)(\s+)', bygroups(Keyword.Declaration, Text), 'funcname'),
-            (r'(\s*:\s*)', bygroups(Text), 'classname'),
+            (r'use\b', Keyword.Namespace),
 
             # non-structural part
             include('value'),
