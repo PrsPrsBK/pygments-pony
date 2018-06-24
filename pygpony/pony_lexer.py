@@ -33,7 +33,7 @@ class PonyLexer(RegexLexer):
 
         'keywords': [
             (words((
-                'actor', 'break', 'continue', 'del', 'elif', 'else', 'end',
+                'break', 'continue', 'del', 'elif', 'else', 'end',
                 'exec', 'finally', 'for', 'in', 'if', 'match', 'new',
                 'object', 'recover', 'ref', 'repeat', 'return', 'type', 'try', 'use', 'while', 'yield',
                 'as', 'with'), suffix=r'\b'),
@@ -60,7 +60,7 @@ class PonyLexer(RegexLexer):
 
         'root': [
             include('value'),
-            (r'(class)((?:\s|\\\s)+)', bygroups(Keyword, Text), 'classname'),
+            (r'(class|actor)((?:\s)+)', bygroups(Keyword, Text), 'classname'),
             (r'(var|let|embed)((?:\s|\\\s)+)', bygroups(Keyword, Text), 'fieldname'),
             (r'(fun|be)((?:\s|\\\s)+)', bygroups(Keyword, Text), 'funcname'),
             (r'/\*', Comment.Multiline, '#push'),
