@@ -47,7 +47,7 @@ class PonyLexer(RegexLexer):
         'simplevalue':[
             include('keywords'),
             (r'-?[0-9_]+', Number.Integer),
-            (r'"(\\\\|\\"|[^"])*"', String.Double),
+            (r'"[^"]*"', String.Double),
         ],
 
         'value': [
@@ -62,7 +62,9 @@ class PonyLexer(RegexLexer):
         'root': [
             include('value'),
             (r'//.*$', Comment.Single),
+            (r'\(|\)|\[|\]|\{|\}', Punctuation),
             (r'[A-Z]{1}[a-zA-Z0-9_]*\b', Name.Class),
+            (r'[a-zA-Z0-9_]+\b', Name.Variable),
             (r'(class|actor|primitive|type)((?:\s)+)', bygroups(Keyword.Declaration, Text), 'classname'),
             (r'(var|let|embed)((?:\s)+)', bygroups(Keyword.Declaration, Text), 'fieldname'),
             (r'(fun|be|new)((?:\s)+)', bygroups(Keyword.Declaration, Text), 'funcname'),
