@@ -77,7 +77,7 @@ class PonyLexer(RegexLexer):
             # structural part
             (r'//.*$', Comment.Single),
             (r'\(|\)|\[|\]|\{|\}|\||&|,|\.(?!>)|=>|:|;', Punctuation),
-            (r'\+|-|\*|/|=|==|!=|\.>|<=|>=|<|>', Operator),
+            (r'\.>|>>|<<|\+|-|\*|/|=|==|!=|<=|>=|<|>', Operator),
             (r'(is|isnt)\b', Operator.Word),
             (r'(actor)(\s+)(Main)', bygroups(Keyword.Declaration, Text, Name.Builtin)),
             (r'(actor|class|primitive|type|trait|interface)(\s+)', bygroups(Keyword.Declaration, Text), 'classname'),
