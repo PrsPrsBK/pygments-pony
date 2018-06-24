@@ -14,6 +14,7 @@ Next, navigate to reST document's directory, do comfig.
 * In ``_ext`` directory, make ``ponylexer.py`` file, and write down like following.
 
 .. code-block:: python
+
     def setup(app):
         try:
             import pygments
