@@ -18,7 +18,7 @@ Next, navigate to reST document's directory, do comfig.
     def setup(app):
         try:
             import pygments
-            from pypony.pony_lexer import PonyLexer
+            from pygpony.pony_lexer import PonyLexer
         except ImportError:
             pass
         else:
