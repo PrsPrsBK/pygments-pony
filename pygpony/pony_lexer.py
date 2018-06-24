@@ -22,7 +22,7 @@ class PonyLexer(RegexLexer):
         ],
 
         'fieldname': [
-            (r'[a-zA-Z_]\w*', Name.Variable, '#pop'),
+            (r'[a-zA-Z_\']+', Name.Variable, '#pop'),
             default('#pop'),
         ],
 
@@ -34,7 +34,7 @@ class PonyLexer(RegexLexer):
         'keywords': [
             (words((
                 'break', 'continue', 'del', 'elif', 'else', 'end',
-                'exec', 'finally', 'for', 'in', 'if', 'match', 'new',
+                'exec', 'finally', 'for', 'in', 'if', 'match',
                 'object', 'recover', 'ref', 'repeat', 'return', 'try', 'use', 'while', 'yield',
                 'as', 'with'), suffix=r'\b'),
              Keyword),
@@ -60,12 +60,15 @@ class PonyLexer(RegexLexer):
 
         'root': [
             include('value'),
-            (r'(class|actor|primitive|type)((?:\s)+)', bygroups(Keyword, Text), 'classname'),
-            (r'(var|let|embed)((?:\s|\\\s)+)', bygroups(Keyword, Text), 'fieldname'),
-            (r'(fun|be)((?:\s)+)', bygroups(Keyword, Text), 'funcname'),
+            (r'//.*$', Comment.Single),
+            (r'[A-Z]{1}[a-zA-Z0-9_]*\b', Name.Class),
+            (r'(class|actor|primitive|type)((?:\s)+)', bygroups(Keyword.Declaration, Text), 'classname'),
+            (r'(var|let|embed)((?:\s)+)', bygroups(Keyword.Declaration, Text), 'fieldname'),
+            (r'(fun|be|new)((?:\s)+)', bygroups(Keyword.Declaration, Text), 'funcname'),
             (r'(\s*:\s*)', bygroups(Text), 'classname'),
+            (r'\+|-|\*|/', Operator),
+            (r'is\b', Operator.Word),
             (r'/\*', Comment.Multiline, '#push'),
-            (r'//.*$', Comment.Singleline),
             (r'.+', Text),
         ],
 
