@@ -65,9 +65,9 @@ class PonyLexer(RegexLexer):
             (r'\(|\)|\[|\]|\{|\}|\||,|\.|=>', Punctuation),
             (r'\+|-|\*|/|=|==|!=|<=|>=|<|>', Operator),
             (r'(is|isnt)\b', Operator.Word),
-            (r'(class|actor|primitive|type|trait|interface)((?:\s)+)', bygroups(Keyword.Declaration, Text), 'classname'),
-            (r'(var|let|embed)((?:\s)+)', bygroups(Keyword.Declaration, Text), 'fieldname'),
-            (r'(fun|be|new)((?:\s)+)', bygroups(Keyword.Declaration, Text), 'funcname'),
+            (r'(class|actor|primitive|type|trait|interface)(\s+)', bygroups(Keyword.Declaration, Text), 'classname'),
+            (r'(var|let|embed)(\s+)', bygroups(Keyword.Declaration, Text), 'fieldname'),
+            (r'(fun|be|new)(\s+)', bygroups(Keyword.Declaration, Text), 'funcname'),
             (r'(\s*:\s*)', bygroups(Text), 'classname'),
 
             # non-structural part
