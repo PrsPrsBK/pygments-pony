@@ -36,7 +36,7 @@ class PonyLexer(RegexLexer):
             (words((
                 'break', 'continue', 'del', 'elif', 'else', 'end',
                 'exec', 'finally', 'for', 'in', 'if', 'match',
-                'object', 'recover', 'ref', 'repeat', 'return', 'try', 'use', 'while', 'yield',
+                'object', 'recover', 'repeat', 'return', 'try', 'while', 'yield',
                 'as', 'with'), suffix=r'\b'),
              Keyword),
             (words((
@@ -76,7 +76,7 @@ class PonyLexer(RegexLexer):
         'root': [
             # structural part
             (r'//.*$', Comment.Single),
-            (r'\(|\)|\[|\]|\{|\}|\||,|\.|=>|:|;', Punctuation),
+            (r'\(|\)|\[|\]|\{|\}|\||&|,|\.|=>|:|;', Punctuation),
             (r'\+|-|\*|/|=|==|!=|<=|>=|<|>', Operator),
             (r'(is|isnt)\b', Operator.Word),
             (r'(actor)(\s+)(Main)', bygroups(Keyword.Declaration, Text, Name.Builtin)),
@@ -87,7 +87,7 @@ class PonyLexer(RegexLexer):
 
             # non-structural part
             include('value'),
-            (r'(iso|trn|val|ref|box|tag)\^?', Keyword),
+            (r'\b(iso|trn|val|ref|box|tag)\^?\b', Keyword),
             (r'[A-Z]{1}[a-zA-Z0-9_]*\b', Name.Class),
             (r"([a-zA-Z0-9_']+)(?=\()", Name.Function),
             (r"[a-zA-Z0-9_']+", Name.Variable),
