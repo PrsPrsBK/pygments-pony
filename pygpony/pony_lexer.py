@@ -27,6 +27,7 @@ class PonyLexer(RegexLexer):
         ],
 
         'funcname': [
+            (r'(iso|trn|val|ref|box|tag)(\s+)([a-zA-Z0-9_]+)(?=\()', bygroups(Keyword, Text, Name.Function), '#pop'),
             (r'[a-zA-Z_]+(?=\()', Name.Function, '#pop'),
             default('#pop'),
         ],
