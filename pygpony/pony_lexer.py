@@ -46,7 +46,7 @@ class PonyLexer(RegexLexer):
 
         'simplevalue':[
             include('keywords'),
-            (r'-?[0-9_]+', Number.Integer),
+            (r'-?[0-9]+[0-9_]*', Number.Integer),
             (r'"[^"]*"', String.Double),
         ],
 
@@ -62,16 +62,17 @@ class PonyLexer(RegexLexer):
         'root': [
             include('value'),
             (r'//.*$', Comment.Single),
-            (r'\(|\)|\[|\]|\{|\}|=>', Punctuation),
-            (r'(iso|trn|val|ref|box|tag)\^?', Keyword),
-            (r'[A-Z]{1}[a-zA-Z0-9_]*\b', Name.Class),
-            (r'[a-zA-Z0-9_]+\b', Name.Variable),
+            (r'\(|\)|\[|\]|\{|\}|\||,|\.|=>', Punctuation),
+            (r'\+|-|\*|/|=|==|!=|<=|>=|<|>', Operator),
+            (r'(is|isnt)\b', Operator.Word),
             (r'(class|actor|primitive|type)((?:\s)+)', bygroups(Keyword.Declaration, Text), 'classname'),
             (r'(var|let|embed)((?:\s)+)', bygroups(Keyword.Declaration, Text), 'fieldname'),
             (r'(fun|be|new)((?:\s)+)', bygroups(Keyword.Declaration, Text), 'funcname'),
             (r'(\s*:\s*)', bygroups(Text), 'classname'),
-            (r'\+|-|\*|/|=|==|!=|<=|>=|<|>', Operator),
-            (r'(is|isnt)\b', Operator.Word),
+            (r'(iso|trn|val|ref|box|tag)\^?', Keyword),
+            (r'[A-Z]{1}[a-zA-Z0-9_]*\b', Name.Class),
+            (r"([a-zA-Z0-9_']+)(?=\()", Name.Function),
+            (r"[a-zA-Z0-9_']+", Name.Variable),
             (r'/\*', Comment.Multiline, '#push'),
             (r'.+', Text),
         ],
