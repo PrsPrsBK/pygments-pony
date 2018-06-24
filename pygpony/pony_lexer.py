@@ -48,8 +48,8 @@ class PonyLexer(RegexLexer):
             # builtin-type
             (words((
                 'Bool', 'String',
-                'ISize', 'ILong', 'I16', 'I32', 'I64', 'I128',
-                'USize', 'ULong', 'U16', 'U32', 'U64', 'U128',
+                'ISize', 'ILong', 'I8', 'I16', 'I32', 'I64', 'I128',
+                'USize', 'ULong', 'U8', 'U16', 'U32', 'U64', 'U128',
                 'F32', 'F64',
                 'Env'), suffix=r'\b'),
              Keyword.Type),
@@ -57,6 +57,9 @@ class PonyLexer(RegexLexer):
 
         'simplevalue':[
             include('keywords'),
+            (r'0b[01]+[0-1_]*', Number.Bin),
+            (r'0x[0-9a-zA-Z]+[0-9a-zA-Z_]*', Number.Hex),
+            (r'-?[0-9]+\.[0-9_]+(?:e(?:\+|-)[0-9]+)?', Number.Float),
             (r'-?[0-9]+[0-9_]*', Number.Integer),
             (r'"[^"]*"', String.Double),
         ],
