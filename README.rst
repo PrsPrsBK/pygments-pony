@@ -2,7 +2,7 @@
 pygments-pony
 =============
 
-**This project is in very early stage. Not work.**
+**This project is in very early stage. It may works to some extent, but not completely well.**
 
 How to activate
 ===============
