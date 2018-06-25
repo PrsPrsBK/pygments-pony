@@ -34,7 +34,7 @@ class PonyLexer(RegexLexer):
 
         'keywords': [
             (words((
-                'break', 'continue', 'del', 'elif', 'else', 'end',
+                'break', 'continue', 'elif', 'else', 'end',
                 'exec', 'finally', 'for', 'in', 'if', 'match',
                 'object', 'recover', 'repeat', 'return', 'try', 'while', 'yield',
                 'as', 'with'), suffix=r'\b'),
@@ -61,6 +61,7 @@ class PonyLexer(RegexLexer):
             (r'0x[0-9a-zA-Z]+[0-9a-zA-Z_]*', Number.Hex),
             (r'-?[0-9]+\.[0-9_]+(?:e(?:\+|-)[0-9]+)?', Number.Float),
             (r'-?[0-9]+[0-9_]*', Number.Integer),
+            (r"'[^']*'", String.Char),
             (r'"[^"]*"', String.Double),
         ],
 
