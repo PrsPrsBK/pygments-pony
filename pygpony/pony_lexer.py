@@ -34,10 +34,10 @@ class PonyLexer(RegexLexer):
 
         'keywords': [
             (words((
-                'break', 'continue', 'elseif', 'else', 'end',
+                'as', 'break', 'continue', 'do', 'elseif', 'else', 'end',
                 'exec', 'finally', 'for', 'in', 'if', 'match',
                 'object', 'recover', 'repeat', 'return', 'try', 'while', 'yield',
-                'as', 'with'), suffix=r'\b'),
+                ), suffix=r'\b'),
              Keyword),
             (words((
                 'true', 'false', 'None'), suffix=r'\b'),
