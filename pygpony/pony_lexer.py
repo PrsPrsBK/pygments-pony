@@ -34,7 +34,7 @@ class PonyLexer(RegexLexer):
 
         'keywords': [
             (words((
-                'break', 'continue', 'elif', 'else', 'end',
+                'break', 'continue', 'elseif', 'else', 'end',
                 'exec', 'finally', 'for', 'in', 'if', 'match',
                 'object', 'recover', 'repeat', 'return', 'try', 'while', 'yield',
                 'as', 'with'), suffix=r'\b'),
