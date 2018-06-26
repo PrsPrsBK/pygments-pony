@@ -16,7 +16,7 @@ class PonyLexer(RegexLexer):
 
         'comment': [
             (r'[^*/]', Comment.Multiline),
-            (r'/\*', Comment.Multiline, '#push'),
+            # (r'/\*', Comment.Multiline, '#push'),
             (r'\*/', Comment.Multiline, '#pop'),
             (r'[*/]', Comment.Multiline),
         ],
@@ -77,6 +77,7 @@ class PonyLexer(RegexLexer):
         'root': [
             # structural part
             (r'//.*$', Comment.Single),
+            (r'/\*', Comment.Multiline, '#push'),
             (r'\(|\)|\[|\]|\{|\}|\||&|,|\.(?!>)|=>|:|;', Punctuation),
             (r'\.>|~|>>|<<|\+|-|\*|%|/|=|==|!=|<=|>=|<|>', Operator),
             (r'\b(and|xor|or|not|is|isnt)\b', Operator.Word),
@@ -92,7 +93,6 @@ class PonyLexer(RegexLexer):
             (r'[A-Z]{1}[a-zA-Z0-9_]*\b', Name.Class),
             (r"([a-zA-Z0-9_']+)(?=\()", Name.Function),
             (r"[a-zA-Z0-9_']+", Name.Variable),
-            (r'/\*', Comment.Multiline, '#push'),
             (r'.+', Text),
         ],
 
