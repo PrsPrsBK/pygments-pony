@@ -36,7 +36,7 @@ class PonyLexer(RegexLexer):
             (words((
                 'as', 'break', 'consume', 'continue', 'do', 'elseif', 'else', 'end', 'error',
                 'exec', 'finally', 'for', 'in', 'if', 'match',
-                'object', 'recover', 'repeat', 'return', 'try', 'until', 'while', 'yield',
+                'object', 'recover', 'repeat', 'return', 'try', 'until', 'where', 'while', 'with', 'yield',
                 ), suffix=r'\b'),
              Keyword),
             (words((
@@ -89,7 +89,7 @@ class PonyLexer(RegexLexer):
 
             # non-structural part
             include('value'),
-            (r'\b(iso|trn|val|ref|box|tag)\^?\b', Keyword),
+            (r'\b(iso|trn|val|ref|box|tag)\b(\^)?', Keyword),
             (r'[A-Z]{1}[a-zA-Z0-9_]*\b', Name.Class),
             (r"([a-zA-Z0-9_']+)(?=\()", Name.Function),
             (r"[a-zA-Z0-9_']+", Name.Variable),
