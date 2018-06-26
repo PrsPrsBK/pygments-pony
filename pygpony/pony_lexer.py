@@ -15,10 +15,9 @@ class PonyLexer(RegexLexer):
         ],
 
         'comment': [
-            (r'[^*/]', Comment.Multiline),
-            # (r'/\*', Comment.Multiline, '#push'),
+            (r'/\*', Comment.Multiline, '#push'),
             (r'\*/', Comment.Multiline, '#pop'),
-            (r'[*/]', Comment.Multiline),
+            (r'.+', Comment.Multiline),
         ],
 
         'fieldname': [
@@ -77,7 +76,7 @@ class PonyLexer(RegexLexer):
         'root': [
             # structural part
             (r'//.*$', Comment.Single),
-            (r'/\*', Comment.Multiline, '#push'),
+            (r'/\*', Comment.Multiline, 'comment'),
             (r'\(|\)|\[|\]|\{|\}|\||&|,|\.(?!>)|=>|:|;', Punctuation),
             (r'\.>|~|>>|<<|\+|-|\*|%|/|=|==|!=|<=|>=|<|>', Operator),
             (r'\b(and|xor|or|not|is|isnt)\b', Operator.Word),
