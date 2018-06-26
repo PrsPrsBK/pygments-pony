@@ -34,9 +34,9 @@ class PonyLexer(RegexLexer):
 
         'keywords': [
             (words((
-                'as', 'break', 'continue', 'do', 'elseif', 'else', 'end',
+                'as', 'break', 'consume', 'continue', 'do', 'elseif', 'else', 'end', 'error',
                 'exec', 'finally', 'for', 'in', 'if', 'match',
-                'object', 'recover', 'repeat', 'return', 'try', 'while', 'yield',
+                'object', 'recover', 'repeat', 'return', 'try', 'until', 'while', 'yield',
                 ), suffix=r'\b'),
              Keyword),
             (words((
