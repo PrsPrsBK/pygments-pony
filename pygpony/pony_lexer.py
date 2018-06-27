@@ -38,9 +38,7 @@ class PonyLexer(RegexLexer):
                 'object', 'recover', 'repeat', 'return', 'then', 'try', 'until', 'where', 'while', 'with', 'yield',
                 ), suffix=r'\b'),
              Keyword),
-            (words((
-                'error'), suffix=r'\b'),
-             Error),
+            ('error', Error),
             (words((
                 'true', 'false', 'None'), suffix=r'\b'),
              Keyword.Constant),
