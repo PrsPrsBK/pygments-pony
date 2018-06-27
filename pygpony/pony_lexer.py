@@ -33,11 +33,14 @@ class PonyLexer(RegexLexer):
 
         'keywords': [
             (words((
-                'as', 'break', 'consume', 'continue', 'do', 'elseif', 'else', 'end', 'error',
+                'as', 'break', 'consume', 'continue', 'do', 'elseif', 'else', 'end',
                 'exec', 'finally', 'for', 'in', 'if', 'match',
                 'object', 'recover', 'repeat', 'return', 'then', 'try', 'until', 'where', 'while', 'with', 'yield',
                 ), suffix=r'\b'),
              Keyword),
+            (words((
+                'error'), suffix=r'\b'),
+             Error),
             (words((
                 'true', 'false', 'None'), suffix=r'\b'),
              Keyword.Constant),
