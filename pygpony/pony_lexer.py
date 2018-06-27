@@ -93,6 +93,7 @@ class PonyLexer(RegexLexer):
             include('value'),
             (r'\b(iso|trn|val|ref|box|tag)\b(\^)?', Keyword),
             (r'[A-Z]{1}[a-zA-Z0-9_]*\b', Name.Class),
+            (r"\bthis(?=\()", Name.Builtin.Pseudo),
             (r"([a-zA-Z0-9_']+)(?=\()", Name.Function),
             (r"[a-zA-Z0-9_']+", Name.Variable),
             (r'.+', Text),
