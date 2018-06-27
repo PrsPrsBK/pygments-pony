@@ -79,7 +79,7 @@ class PonyLexer(RegexLexer):
             (r'//.*$', Comment.Single),
             (r'/\*', Comment.Multiline, 'comment'),
             (r'\(|\)|\[|\]|\{|\}|\||&|,|\.(?!>)|=>|:|;', Punctuation),
-            (r'\.>|~|>>|<<|\+|-|\*|%|/|=|==|!=|<=|>=|<|>|!', Operator),
+            (r'\.>|~|>>|<<|\+|-|\*|%|/|=|==|!=|<=|>=|<|>|!|\^', Operator),
             (r'\b(and|xor|or|not|is|isnt)\b', Operator.Word),
             (r'(actor)(\s+)(Main)', bygroups(Keyword.Declaration, Text, Name.Builtin)),
             (r'(actor|class|primitive|type|trait|interface)(\s+)', bygroups(Keyword.Declaration, Text), 'classname'),
@@ -89,7 +89,7 @@ class PonyLexer(RegexLexer):
 
             # non-structural part
             include('value'),
-            (r'\b(iso|trn|val|ref|box|tag)\b(\^)?', Keyword),
+            (r'\b(iso|trn|val|ref|box|tag)\b', Keyword),
             (r'[A-Z]{1}[a-zA-Z0-9_]*\b', Name.Class),
             (r"\bthis(?=\()", Name.Builtin.Pseudo),
             (r"([a-zA-Z0-9_']+)(?=\()", Name.Function),
