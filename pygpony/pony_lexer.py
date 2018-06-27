@@ -40,13 +40,14 @@ class PonyLexer(RegexLexer):
              Keyword),
             ('error', Error),
             (words((
-                'true', 'false', 'None'), suffix=r'\b'),
+                'true', 'false'), suffix=r'\b'),
              Keyword.Constant),
             (words((
                 '_init', '_final'), suffix=r'\b'),
              Name.Function.Magic),
             # builtin-type
             (words((
+                'None',
                 'Bool', 'String',
                 'ISize', 'ILong', 'I8', 'I16', 'I32', 'I64', 'I128',
                 'USize', 'ULong', 'U8', 'U16', 'U32', 'U64', 'U128',
