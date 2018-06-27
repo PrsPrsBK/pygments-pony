@@ -52,7 +52,7 @@ class PonyLexer(RegexLexer):
                 'USize', 'ULong', 'U8', 'U16', 'U32', 'U64', 'U128',
                 'F32', 'F64',
                 'Env'), suffix=r'\b'),
-             Keyword.Type),
+             Name.Builtin),
         ],
 
         'simplevalue':[
