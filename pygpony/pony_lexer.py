@@ -35,7 +35,7 @@ class PonyLexer(RegexLexer):
             (words((
                 'as', 'break', 'consume', 'continue', 'do', 'elseif', 'else', 'end', 'error',
                 'exec', 'finally', 'for', 'in', 'if', 'match',
-                'object', 'recover', 'repeat', 'return', 'try', 'until', 'where', 'while', 'with', 'yield',
+                'object', 'recover', 'repeat', 'return', 'then', 'try', 'until', 'where', 'while', 'with', 'yield',
                 ), suffix=r'\b'),
              Keyword),
             (words((
