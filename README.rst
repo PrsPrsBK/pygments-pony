@@ -8,7 +8,7 @@ How to activate
 ===============
 
 Navigate to pygments-pony directory, and ``pip install -e .`` .
-Next, navigate to reST document's directory, do comfig.
+Next, navigate to reST document's directory, do some configs.
 
 * In ``conf.py``, add ``'ponylexer'`` to ``extensions`` array.
 * In ``_ext`` directory, make ``ponylexer.py`` file, and write down like following.
