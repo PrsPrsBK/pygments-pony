@@ -99,6 +99,7 @@ class PonyLexer(RegexLexer):
 
             # non-structural part
             include('value'),
+            (r'\?', Text),
             (r'\b(iso|trn|val|ref|box|tag)\b', Keyword),
             (r'_?[A-Z]{1}[a-zA-Z0-9_]*\b', Name.Class),
             (r"\bthis(?=\()", Name.Builtin.Pseudo),
