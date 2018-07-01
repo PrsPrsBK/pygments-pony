@@ -25,7 +25,7 @@ class PonyLexer(RegexLexer):
             default('#pop'),
         ],
 
-        'funcname': [
+        'funcDecl': [
             (r'(iso|trn|val|ref|box|tag)(\s+)([a-zA-Z0-9_]+)(?=\()', bygroups(Keyword, Text, Name.Function), '#pop'),
             (r'[a-zA-Z_]+(?=\()', Name.Function, '#pop'),
             default('#pop'),
@@ -94,7 +94,7 @@ class PonyLexer(RegexLexer):
             (r'(actor)(\s+)(Main)', bygroups(Keyword.Declaration, Text, Name.Builtin)),
             (r'(actor|class|primitive|type|trait|interface)(\s+)', bygroups(Keyword.Declaration, Text), 'classname'),
             (r'(var|let|embed)(\s+)', bygroups(Keyword.Declaration, Text), 'fieldname'),
-            (r'(fun|be|new)(\s+)', bygroups(Keyword.Declaration, Text), 'funcname'),
+            (r'(fun|be|new)(\s+)', bygroups(Keyword.Declaration, Text), 'funcDecl'),
             (r'use\b', Keyword.Namespace),
 
             # non-structural part
