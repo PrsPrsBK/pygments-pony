@@ -9,7 +9,7 @@ class PonyLexer(RegexLexer):
     filenames = ['*.pony']
 
     tokens = {
-        'classname': [
+        'classDecl': [
             (r'[A-Z]{1}[a-zA-Z0-9_]\w*', Name.Class, '#pop'),
             default('#pop'),
         ],
@@ -20,7 +20,7 @@ class PonyLexer(RegexLexer):
             (r'.+', Comment.Multiline),
         ],
 
-        'fieldname': [
+        'fieldDecl': [
             (r'[a-zA-Z_\']+', Name.Variable, '#pop'),
             default('#pop'),
         ],
@@ -92,8 +92,8 @@ class PonyLexer(RegexLexer):
             (r'\.>|~|>>|<<|\||&|\+|-|\*|%|/|=|==|!=|<=|>=|<|>|!|\^', Operator),
             (r'\b(and|xor|or|not|is|isnt)\b', Operator.Word),
             (r'(actor)(\s+)(Main)', bygroups(Keyword.Declaration, Text, Name.Builtin)),
-            (r'(actor|class|primitive|type|trait|interface)(\s+)', bygroups(Keyword.Declaration, Text), 'classname'),
-            (r'(var|let|embed)(\s+)', bygroups(Keyword.Declaration, Text), 'fieldname'),
+            (r'(actor|class|primitive|type|trait|interface)(\s+)', bygroups(Keyword.Declaration, Text), 'classDecl'),
+            (r'(var|let|embed)(\s+)', bygroups(Keyword.Declaration, Text), 'fieldDecl'),
             (r'(fun|be|new)(\s+)', bygroups(Keyword.Declaration, Text), 'funcDecl'),
             (r'use\b', Keyword.Namespace),
 
