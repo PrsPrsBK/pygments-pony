@@ -72,7 +72,14 @@ class PonyLexer(RegexLexer):
             (r'-?[0-9]+\.[0-9_]+(?:e(?:\+|-)[0-9]+)?', Number.Float),
             (r'-?[0-9]+[0-9_]*', Number.Integer),
             (r"'[^']*'", String.Char),
-            (r'"[^"]*"', String.Double),
+            # (r'"[^"]*"', String.Double),
+            (r'"', String.Double, 'stringSeq'), # if buggy, discard this line and recover simple one.
+        ],
+
+        'stringSeq': [
+            (r'\\([\\abefnrtv"\'0]|[uU]{1}[a-fA-F0-9]{6}|[uU]{1}[a-fA-F0-9]{4}|x[a-fA-F0-9]{2})', String.Escape),
+            (r'"', String.Double, '#pop'),
+            (r'[^"\\]+', String.Double),
         ],
 
         'value': [
