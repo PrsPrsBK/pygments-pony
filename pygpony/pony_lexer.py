@@ -65,30 +65,10 @@ class PonyLexer(RegexLexer):
              Name.Builtin),
         ],
 
-        'simplevalue':[
-            include('keywords'),
-            (r'0b[01]+[0-1_]*', Number.Bin),
-            (r'0x[0-9a-zA-Z]+[0-9a-zA-Z_]*', Number.Hex),
-            (r'-?[0-9]+\.[0-9_]+(?:e(?:\+|-)[0-9]+)?', Number.Float),
-            (r'-?[0-9]+[0-9_]*', Number.Integer),
-            (r"'[^']*'", String.Char),
-            # (r'"[^"]*"', String.Double),
-            (r'"', String.Double, 'stringSeq'), # if buggy, discard this line and recover simple one.
-        ],
-
         'stringSeq': [
             (r'\\([\\abefnrtv"\'0]|[uU]{1}[a-fA-F0-9]{6}|[uU]{1}[a-fA-F0-9]{4}|x[a-fA-F0-9]{2})', String.Escape),
             (r'"', String.Double, '#pop'),
             (r'[^"\\]+', String.Double),
-        ],
-
-        'value': [
-            include('whitespace'),
-            include('simplevalue'),
-        ],
-
-        'whitespace': [
-            (r'\s+', Text),
         ],
 
         'root': [
@@ -105,7 +85,15 @@ class PonyLexer(RegexLexer):
             (r'use\b', Keyword.Namespace),
 
             # non-structural part
-            include('value'),
+            (r'\s+', Text),
+            include('keywords'),
+            (r'0b[01]+[0-1_]*', Number.Bin),
+            (r'0x[0-9a-zA-Z]+[0-9a-zA-Z_]*', Number.Hex),
+            (r'-?[0-9]+\.[0-9_]+(?:e(?:\+|-)[0-9]+)?', Number.Float),
+            (r'-?[0-9]+[0-9_]*', Number.Integer),
+            (r"'[^']*'", String.Char),
+            # (r'"[^"]*"', String.Double),
+            (r'"', String.Double, 'stringSeq'), # if buggy, discard this line and recover simple one.
             (r'\?', Text),
             (r'\b(iso|trn|val|ref|box|tag)\b', Keyword),
             (r'_?[A-Z]{1}[a-zA-Z0-9_]*\b', Name.Class),
